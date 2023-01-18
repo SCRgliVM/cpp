@@ -4,7 +4,7 @@
  *         various types as a sequence of bytes in memory
  * @version 0.1
  * @date 2023-01-12
- * 
+ *
  * @warning The module uses the printf function to display the results.
  *           Module functions do not check the correctness of parameters
  */
@@ -13,14 +13,14 @@
 
 /**
  * @brief Pointer to byte
- * 
+ *
  */
 typedef unsigned char *byte_pointer;
 
 /**
  * @brief The function shows the number of bytes passed to it located at
  *        the passed pointer
- * 
+ *
  * @param[in] pointer Pointer to the first byte starting from which the value
  *                    representation will be displayed
  * @param[in] length Shown area size in bytes. length must be > 0
@@ -30,5 +30,17 @@ typedef unsigned char *byte_pointer;
  *          and the availability of memory on it
  */
 void show_bytes(byte_pointer pointer, size_t length);
+
+/**
+ * @brief Shows value representations in the virtual memory
+ *
+ * @tparam Type The type of the value
+ * @param value The value whose representation will be shown
+ */
+template <typename Type>
+void show_byte_representations(Type value)
+{
+    show_bytes((byte_pointer)&value, sizeof(Type));
+}
 
 #endif
